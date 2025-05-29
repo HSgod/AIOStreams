@@ -11,6 +11,7 @@ const cache = Cache.getInstance<string, string>('publicIp');
 const PRIVATE_CIDR = /^(10\.|127\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)/;
 
 export async function generateMediaFlowStreams(
+  url: string,
   mediaFlowConfig: Config['mediaFlowConfig'],
   headers?: {
     request?: Record<string, string>;
