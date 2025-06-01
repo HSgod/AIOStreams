@@ -15,6 +15,7 @@ import {
   createLogger,
   maskSensitiveInfo,
 } from '@aiostreams/utils';
+import { fetch as uFetch, ProxyAgent } from 'undici';
 import { emojiToLanguage, codeToLanguage } from '@aiostreams/formatters';
 
 const logger = createLogger('wrappers');
@@ -175,7 +176,7 @@ export class BaseWrapper {
     );
 
     let response = useProxy
-      ? fetch(url, {
+      ? uFetch(url, {
           dispatcher: new ProxyAgent(Settings.ADDON_PROXY),
           method: 'GET',
           headers: this.headers,
